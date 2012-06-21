@@ -92,7 +92,7 @@
 	</dependencies>
 
 	<build>
-		<finalName>jeedemo</finalName>
+		<finalName>szopMan</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>

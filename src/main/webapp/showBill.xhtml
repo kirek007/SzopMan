@@ -26,16 +26,59 @@
                 </f:facet>
                 <h:outputText value="#{bill.billValue}" />
             </rich:column>    
+           <rich:column style="width:100px;text-align: center;">
+                <f:facet name="header">
+                    <h:outputText value="Sell date" />
+                </f:facet>
+                <h:outputText value="#{bill.sellDate}" />
+            </rich:column>   
             <rich:column style="width:150px;text-align: center;">
                 <f:facet name="header">
                     <h:outputText value="Operation" />
                 </f:facet>
-                <h:commandButton value="Show specyfication" action="#{billBean.selectBill}"/>
+                <a4j:commandButton value="Show specyfication" action="#{billBean.selectBill}" render="spec"/>
             </rich:column>                
 </rich:dataTable>
+                <a4j:status >
+                	<f:facet name="start">
+                    	<h:graphicImage value="http://showcase.richfaces.org/images/ai.gif" alt="ai" />
+                    </f:facet>
+                </a4j:status>
 </rich:panel>
 </h:form>
 </p>
+<a4j:outputPanel id="spec">
+
+<rich:panel header="Bill #{billBean.billToShow.id} specyfication. Value #{billBean.billToShow.billValue}">
+<rich:dataTable value="#{billBean.billspec}" var="spec" id="table"  rowClasses="odd-row, even-row"
+            styleClass="stable">
+             <rich:column style="width:200px;text-align: center;">
+                <f:facet name="header">
+                    <h:outputText value="BillSpecId" />
+                </f:facet>
+                <h:outputText value="#{spec.id}" />
+            </rich:column >
+            <rich:column style="width:100px;text-align: center;">
+                <f:facet name="header">
+                    <h:outputText value="Article" />
+                </f:facet>
+                <h:outputText value="#{spec.article.nazwa}" />
+            </rich:column> 
+            <rich:column style="width:100px;text-align: center;">
+                <f:facet name="header">
+                    <h:outputText value="Price" />
+                </f:facet>
+                <h:outputText value="#{spec.article.cena}" />
+            </rich:column>         
+            <rich:column style="width:100px;text-align: center;">
+                <f:facet name="header">
+                    <h:outputText value="Quantity" />
+                </f:facet>
+                <h:outputText value="#{spec.quantity}" />
+            </rich:column>               
+</rich:dataTable>
+</rich:panel>
+</a4j:outputPanel>
 </center>
 </ui:define>
 </ui:composition>

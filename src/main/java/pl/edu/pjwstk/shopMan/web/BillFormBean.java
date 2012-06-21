@@ -43,13 +43,21 @@ public class BillFormBean implements Serializable {
 	}
 
 	public ListDataModel<BillSpec> getBillspec() {
-		billspec.setWrappedData(bm.getBillSpecList(billToShow));
+		billspec.setWrappedData(bm.getBillSpecList(getBillToShow()));
 		return billspec;
 	}
 	
 	public String selectBill(){
-		billToShow = bills.getRowData();
-		return "showSpecBill";
+		setBillToShow(bills.getRowData());
+		return null;
+	}
+
+	public Bill getBillToShow() {
+		return billToShow;
+	}
+
+	public void setBillToShow(Bill billToShow) {
+		this.billToShow = billToShow;
 	}
 
 
