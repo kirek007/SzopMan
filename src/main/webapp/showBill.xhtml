@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	template="/templates/default.xhtml"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich">
+ 
+<ui:define name="content">
+<center>
+<p>
+<h:form>
+<rich:panel header="Bills list">
+<rich:dataTable value="#{billBean.bills}" var="bill" id="table"  rowClasses="odd-row, even-row"
+            styleClass="stable">
+             <rich:column style="width:200px;text-align: center;">
+                <f:facet name="header">
+                    <h:outputText value="BillID" />
+                </f:facet>
+                <h:outputText value="#{bill.id}" />
+            </rich:column >
+            <rich:column style="width:100px;text-align: center;">
+                <f:facet name="header">
+                    <h:outputText value="Value" />
+                </f:facet>
+                <h:outputText value="#{bill.billValue}" />
+            </rich:column>    
+            <rich:column style="width:150px;text-align: center;">
+                <f:facet name="header">
+                    <h:outputText value="Operation" />
+                </f:facet>
+                <h:commandButton value="Show specyfication" action="#{billBean.selectBill}"/>
+            </rich:column>                
+</rich:dataTable>
+</rich:panel>
+</h:form>
+</p>
+</center>
+</ui:define>
+</ui:composition>
+
+

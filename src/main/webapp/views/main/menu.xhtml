@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:rich="http://richfaces.org/rich">
+	<h:form>
+	<p>
+	<rich:panel header="SzopMan menu">
+	  <ul>
+		<li>
+		  <h:commandLink action="home?faces-redirect=true">
+			<h:outputText value="Home" />
+		  </h:commandLink>
+		</li>
+		<li>
+		  <h:commandLink action="articleManager?faces-redirect=true">
+			<h:outputText value="Article manager" />
+		  </h:commandLink>
+		</li>
+		<li>
+		  <h:commandLink action="createBill?faces-redirect=true">
+			<h:outputText value="Create bill" />
+		  </h:commandLink>
+		</li>
+		<li>
+		  <h:commandLink action="showBill?faces-redirect=true">
+			<h:outputText value="Bills review" />
+		  </h:commandLink>
+		</li>
+	</ul>
+
+	</rich:panel>
+	</p>
+	<p>
+	
+	<rich:panel header="Choose your favorite skin">	
+	   <h:selectOneMenu id="select" value="#{skinBean.skin}" onchange="submit()">
+		<f:selectItem itemLabel="plain" itemValue="plain" />
+		<f:selectItem itemLabel="emeraldTown" itemValue="emeraldTown" />
+		<f:selectItem itemLabel="blueSky" itemValue="blueSky" />
+		<f:selectItem itemLabel="wine" itemValue="wine" />
+		<f:selectItem itemLabel="japanCherry" itemValue="japanCherry" />
+		<f:selectItem itemLabel="ruby" itemValue="ruby" />
+		<f:selectItem itemLabel="classic" itemValue="classic" />
+		<f:selectItem itemLabel="deepMarine" itemValue="deepMarine" />
+	   </h:selectOneMenu>		
+	</rich:panel>
+	</p>
+   </h:form>
+</ui:composition>

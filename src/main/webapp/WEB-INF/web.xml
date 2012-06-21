@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
+  <display-name>shopMan - I am at your service</display-name>
+  <context-param>
+    <param-name>org.richfaces.skin</param-name>
+    <param-value>#{skinBean.skin}</param-value>
+  </context-param>
+  <context-param>
+    <param-name>org.richfaces.CONTROL_SKINNING</param-name>
+    <param-value>enable</param-value>
+  </context-param>
+</web-app>

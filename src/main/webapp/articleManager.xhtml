@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	template="/templates/default.xhtml"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich">
+ 
+<ui:define name="content">
+    <h:outputStylesheet>
+        .even-row {
+        background-color: #FCFFFE;
+        }
+ 
+        .odd-row {
+        background-color: #ECF3FE;
+        }
+ 
+        .active-row {l
+        background-color: #FFEBDA !important;
+        cursor: pointer;
+        }
+    </h:outputStylesheet>
+    <center>   
+    <p>
+    <h:form id="form">
+    <rich:panel  header="Article list">
+        <a4j:outputPanel id="List">
+
+        <rich:dataTable value="#{articleBean.articles}" var="art" id="table" rowClasses="odd-row, even-row"
+            styleClass="stable">
+            <rich:column style="width:70px;text-align: center;">
+                <f:facet name="header">
+                    <h:outputText value="ID" />
+                </f:facet>
+                <h:outputText value="#{art.id}" />
+            </rich:column>
+            <rich:column style="width:200px;text-align: center;">
+                <f:facet name="header">
+                    <h:outputText value="Name" />
+                </f:facet>
+                <h:outputText value="#{art.nazwa}" />
+            </rich:column >
+            <rich:column style="width:100px;text-align: center;">
+                <f:facet name="header">
+                    <h:outputText value="Price" />
+                </f:facet>
+                <h:outputText value="#{art.cena}" />
+            </rich:column>
+            <rich:column style="width:200px;text-align: center;">
+                <f:facet name="header">
+                    <h:outputText value="Valid to" />
+                </f:facet>
+				<h:outputText value="#{art.dataWaznosci}" />
+            </rich:column>
+            <rich:column style="width:150px;text-align: center;">
+                <f:facet name="header">
+                    <h:outputText value="Operation" />
+                </f:facet>
+                <a4j:commandButton value="Delete" action="#{articleBean.deleteArticle}" render="List"/>
+            </rich:column>
+        </rich:dataTable>
+                <a4j:status >
+                	<f:facet name="start">
+                    	<h:graphicImage value="http://showcase.richfaces.org/images/ai.gif" alt="ai" />
+                    </f:facet>
+                </a4j:status>
+ 
+        </a4j:outputPanel>
+    </rich:panel>    
+    </h:form>
+    </p>
+    <p>
+    <h:form>
+    <a4j:outputPanel id="Position">
+    <rich:panel header="Add article">
+		<h:outputText value="Name:" />
+		<h:inputText label="Name" value="#{articleBean.article.nazwa}" required="true" />
+		<h:outputText value="Price:" />
+		<h:inputText value="#{articleBean.article.cena}" required="true" >
+		</h:inputText>
+		<h:outputText value="Valid to: " />
+				<rich:calendar value="#{articleBean.article.dataWaznosci}" 
+					id="calendar" datePattern="dd.MM.yyyy" style="width:200px">
+				</rich:calendar>
+		 <a4j:commandButton value="Save" action="#{articleBean.addArticle}" render="List,Position"/>
+                
+                <a4j:status >
+                	<f:facet name="start">
+                    	<h:graphicImage value="http://showcase.richfaces.org/images/ai.gif" alt="ai" />
+                    </f:facet>
+                </a4j:status>
+               
+    </rich:panel>
+    </a4j:outputPanel>
+    </h:form>
+
+	</p>
+	</center>
+	</ui:define>
+
+</ui:composition>
