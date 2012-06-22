@@ -25,7 +25,9 @@
                 <f:facet name="header">
                     <h:outputText value="Price" />
                 </f:facet>
-                <h:outputText value="#{art.cena}" />
+                <h:outputText value="#{art.cena}" >
+                	<f:convertNumber currencySymbol="$" maxFractionDigits="2" type="currency" />
+                </h:outputText>
             </rich:column>    
             <rich:column style="width:150px;text-align: center;">
                 <f:facet name="header">
@@ -47,7 +49,10 @@
 		<h:form>
 			<h3>
 			<h:outputText value="Selected article: #{createBillBean.billSpec.article.nazwa}"/><br/>
-		    <h:outputText value="Valid to: #{createBillBean.billSpec.article.dataWaznosci}"/><br/>
+			<h:outputText value="Valid to: "/>
+		    <h:outputText value="#{createBillBean.billSpec.article.dataWaznosci}">
+		    	<f:convertDateTime type="date" pattern="yyyy.MM.dd"/>
+		    </h:outputText><br/>
 		    </h3>
 		    <h:outputText value="Quantity: "/> <h:inputText value="#{createBillBean.billSpec.quantity}" /> 
 		    <a4j:commandButton value="Save" action="#{createBillBean.addArticleToBill}" render="bills"/>
@@ -78,7 +83,15 @@
                     <h:outputText value="Quantity" />
                 </f:facet>
                 <h:outputText value="#{spec.quantity}" />
-            </rich:column>                   
+            </rich:column>      
+            <rich:column style="width:100px;text-align: center;">
+                <f:facet name="header">
+                    <h:outputText value="Value" />
+                </f:facet>
+                <h:outputText value="#{spec.quantity * spec.article.cena}" >
+                	<f:convertNumber currencySymbol="$" maxFractionDigits="2" type="currency" />
+                </h:outputText>
+            </rich:column>                
 </rich:dataTable>
     	</a4j:outputPanel>
     </rich:panel>

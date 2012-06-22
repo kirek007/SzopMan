@@ -24,13 +24,17 @@
                 <f:facet name="header">
                     <h:outputText value="Value" />
                 </f:facet>
-                <h:outputText value="#{bill.billValue}" />
+                <h:outputText value="#{bill.billValue}" >
+                	<f:convertNumber currencySymbol="$" maxFractionDigits="2" type="currency" />
+                </h:outputText>
             </rich:column>    
            <rich:column style="width:100px;text-align: center;">
                 <f:facet name="header">
                     <h:outputText value="Sell date" />
                 </f:facet>
-                <h:outputText value="#{bill.sellDate}" />
+                <h:outputText value="#{bill.sellDate}" >
+                	<f:convertDateTime type="date" pattern="yyyy.MM.dd"/>
+                </h:outputText>
             </rich:column>   
             <rich:column style="width:150px;text-align: center;">
                 <f:facet name="header">
@@ -49,7 +53,7 @@
 </p>
 <a4j:outputPanel id="spec">
 
-<rich:panel header="Bill #{billBean.billToShow.id} specyfication. Value #{billBean.billToShow.billValue}">
+<rich:panel header="Bill #{billBean.billToShow.id} specyfication">
 <rich:dataTable value="#{billBean.billspec}" var="spec" id="table"  rowClasses="odd-row, even-row"
             styleClass="stable">
              <rich:column style="width:200px;text-align: center;">
@@ -68,14 +72,24 @@
                 <f:facet name="header">
                     <h:outputText value="Price" />
                 </f:facet>
-                <h:outputText value="#{spec.article.cena}" />
+                <h:outputText value="#{spec.article.cena}" >
+                	<f:convertNumber currencySymbol="$" maxFractionDigits="2" type="currency" />
+                </h:outputText>
             </rich:column>         
             <rich:column style="width:100px;text-align: center;">
                 <f:facet name="header">
                     <h:outputText value="Quantity" />
                 </f:facet>
                 <h:outputText value="#{spec.quantity}" />
-            </rich:column>               
+            </rich:column>          
+            <rich:column style="width:100px;text-align: center;">
+                <f:facet name="header">
+                    <h:outputText value="Value" />
+                </f:facet>
+                <h:outputText value="#{spec.quantity * spec.article.cena}" >
+                	<f:convertNumber currencySymbol="$" maxFractionDigits="2" type="currency" />
+                </h:outputText>
+            </rich:column>        
 </rich:dataTable>
 </rich:panel>
 </a4j:outputPanel>
