@@ -44,7 +44,7 @@ public class Bill {
 		this.billValue = billValue;
 	}
 	
-	@OneToMany(cascade = CascadeType.ALL, fetch=FetchType.EAGER)
+	@OneToMany(cascade = CascadeType.REMOVE, fetch=FetchType.EAGER)
 	public List<BillSpec> getBillSpec() {
 		return billSpec;
 	}

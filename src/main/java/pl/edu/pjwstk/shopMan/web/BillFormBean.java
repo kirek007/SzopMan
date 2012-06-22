@@ -60,9 +60,6 @@ public class BillFormBean implements Serializable {
 		this.billToShow = billToShow;
 	}
 
-
-
-
 	 
 }
  
